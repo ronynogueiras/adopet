@@ -6,4 +6,5 @@
     <string name="or">OU</string>
     <string name="register">Cadastrar</string>
     <string name="enter">Entrar</string>
+    <string name="post_from">Por: $1%s</string>
 </resources>
