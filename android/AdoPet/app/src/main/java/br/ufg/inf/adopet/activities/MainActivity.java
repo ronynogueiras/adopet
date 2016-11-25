@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         mViewPager = (ViewPager) findViewById(R.id.pager);
 
 
-        PagerAdapter pager = new PagerAdapter(getSupportFragmentManager(),mTabLayout.getTabCount(),this);
+        PagerAdapter pager = new PagerAdapter(getSupportFragmentManager(),mTabLayout.getTabCount(),false);
         mViewPager.setAdapter(pager);
 
         mTabLayout.addOnTabSelectedListener(this);
