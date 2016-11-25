@@ -12,14 +12,16 @@ public class Post {
 
     private int id;
     private String title;
+    private String author;
     private String description;
     private String[] images;
     private String shareLink;
     private int interested;
 
-    public Post(int id, String title, String description, String[] images, String shareLink, int interested) {
+    public Post(int id, String title, String author, String description, String[] images, String shareLink, int interested) {
         this.id = id;
         this.title = title;
+        this.author = author;
         this.description = description;
         this.images = images;
         this.shareLink = shareLink;
@@ -48,6 +50,10 @@ public class Post {
 
     public int getInterested() {
         return interested;
+    }
+
+    public String getAuthor(){
+        return author;
     }
 
     public String toJSON() throws JSONException {
