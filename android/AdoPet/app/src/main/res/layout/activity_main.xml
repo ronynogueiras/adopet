@@ -8,14 +8,7 @@
     android:orientation="vertical"
     tools:context="br.ufg.inf.adopet.activities.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    <include layout="@layout/toolbar"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
