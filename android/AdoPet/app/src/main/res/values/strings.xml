@@ -7,4 +7,9 @@
     <string name="register">Cadastrar</string>
     <string name="enter">Entrar</string>
     <string name="post_from">Por: $1%s</string>
+    <string-array name="tabs">
+        <item>Seus Amigos</item>
+        <item>Adotados</item>
+        <item>Eu</item>
+    </string-array>
 </resources>
