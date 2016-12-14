@@ -1,5 +1,5 @@
 class AdoptionsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_animal, only: [:create]
   before_action :set_new_owner, only: [:create]
   rescue_from ActiveRecord::RecordNotUnique, with: :animal_already_adopted
