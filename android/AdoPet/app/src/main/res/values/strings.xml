@@ -13,9 +13,29 @@
     <string name="invalid_id_post">Identificador da Publicação inválido</string>
     <string name="description_not_avaliable">Descrição não disponível</string>
     <string name="loading_message">Carregando...</string>
+    <string name="login_description">Faça parte da nossa comunidade, adote um animal de estimação ou coloque um animal para adoção!</string>
+    <string name="unknown_error">Erro desconhecido</string>
+    <string name="empty_login_inputs">Os campos E-mail e Senha devem ser informados.</string>
+    <string name="name">Seu nome</string>
+    <string name="confirm_password">Confirme a senha</string>
+    <string name="invalid_register_inputs">Todos os campos devem ser informados</string>
+    <string name="not_avaliable">Não disponível</string>
+    <string name="invalid_new_post_inputs">Todos os campos devem ser informados.</string>
+    <string name="new_post_title">Nova Publicação</string>
+    <string name="title">Título</string>
+    <string name="description">Descrição</string>
+    <string name="animal">Animal</string>
+    <string name="pick_image">Selecionar Imagem</string>
+    <string name="publish">Publicar</string>
+    <string name="empty_posts">Você não possui nenhuma publicação</string>
     <string-array name="tabs">
-        <item>Seus Amigos</item>
+        <item>Para Adoção</item>
         <item>Adotados</item>
-        <item>Eu</item>
+        <item>Conta</item>
+    </string-array>
+    <string-array name="type_post">
+        <item>Cachorro</item>
+        <item>Gato</item>
+        <item>Outros</item>
     </string-array>
 </resources>
