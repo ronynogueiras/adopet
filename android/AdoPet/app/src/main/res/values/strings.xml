@@ -9,6 +9,9 @@
     <string name="post_from">Por: $1%s</string>
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
+    <string name="imagem_da_postagem">Imagem da postagem</string>
+    <string name="invalid_id_post">Identificador da Publicação inválido</string>
+    <string name="description_not_avaliable">Descrição não disponível</string>
     <string-array name="tabs">
         <item>Seus Amigos</item>
         <item>Adotados</item>
