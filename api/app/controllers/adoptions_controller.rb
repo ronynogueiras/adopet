@@ -8,6 +8,10 @@ class AdoptionsController < ApplicationController
     @adoptions = Adoption.all
   end
 
+  def show
+    @adoption = Adoption.find_by(id: adoption_params[:id])
+  end
+
   def create
     @adoption = Adoption.new(create_params)
     if @adoption.save
@@ -43,6 +47,6 @@ class AdoptionsController < ApplicationController
   end
 
   def adoption_params
-    params.permit(:animal)
+    params.permit(:animal, :id)
   end
 end

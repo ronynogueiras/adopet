@@ -5,7 +5,7 @@ Rails.application.routes.draw do
                                       }
   resources :animals, except: [:new, :edit]
   resources :users, only: [:update]
-  resources :adoptions, only: [:index, :create]
+  resources :adoptions, only: [:index, :create, :show]
   get 'users/:id/animals', to: 'users#animals'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
