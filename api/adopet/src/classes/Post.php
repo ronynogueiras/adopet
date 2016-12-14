@@ -120,15 +120,53 @@ class Post {
         return $response;
     }
     public function all_user(Request $request, Response $response, array $args){
+        
+        if(is_numeric($args['id'])){
+            $id = $args['id'];
+
+            $query = $this->db->prepare("select * from post where user_id=? and status='Active'");
+            $query->execute(array($id));
+            $posts = $query->fetchAll();
+            $response = $response->withJson(array('posts' => $posts),200);
+            
+        }else{
+            $message = array('message' => 'Identificador do usuário é inválido');
+            $response = $response->withJson($message,500);
+        }
+        
         return $response;
     }
     public function all(Request $request, Response $response, array $args){
+        
+        $query = $this->db->prepare("select * from post where status='Active' order by date desc");
+        $query->execute();
+        $posts = $query->fetchAll();
+        $response = $response->withJson(array('posts' => $posts),200);
+        
         return $response;
     }
     public function adopted(Request $request, Response $response, array $args){
+        
+        $query = $this->db->prepare("select * from post join adopted on adopted.post_id=post.id join user on user.id=adopted.user_id order by adopted.date desc");
+        $query->execute();
+        $adopted = $query->fetchAll();
+        
+        $response = $response->withJson(array('posts'=>$adopted),200);
+
         return $response;
     }
     public function peoples(Request $request, Response $response, array $args){
+
+        if(is_numeric($args['id'])){
+            $query = $this->db->prepare("select * from post join interested on interested.post_id=post.id join user on user.id=interested.user_id where post.id=? order by interested.date desc");
+            $query->execute($id);
+            $interested = $query->fetchAll();
+            
+            $response = $response->withJson(array('users'=>$interested),200);
+        }else{
+            $message = array('message' => 'Identificador da postagem é inválido');
+            $response = $response->withJson($message,500);
+        }       
         return $response;
     }
 }
