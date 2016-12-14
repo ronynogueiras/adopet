@@ -14,18 +14,15 @@ public class Post {
     private String title;
     private String author;
     private String description;
-    private String[] images;
+    private String image;
     private String shareLink;
     private int interested;
 
-    public Post(int id, String title, String author, String description, String[] images, String shareLink, int interested) {
+    public Post(int id, String title, String author, String image) {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.description = description;
-        this.images = images;
-        this.shareLink = shareLink;
-        this.interested = interested;
+        this.image = image;
     }
 
     public int getId() {
@@ -40,8 +37,8 @@ public class Post {
         return description;
     }
 
-    public String[] getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
     public String getShareLink() {
