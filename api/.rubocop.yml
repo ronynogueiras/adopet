@@ -1,0 +1,33 @@
+# This is the configuration used to check the rubocop source code.
+# Check out: https://github.com/bbatsov/rubocop
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+  Include:
+    - '**/config.ru'
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'db/schema.rb'
+    - 'spec/features/*'
+    - 'config/environments/*'
+    - 'bin/*'
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+EndOfLine:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Max: 20
