@@ -43,7 +43,7 @@ public class PostFeedListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         currentViewHolder.getTitle().setText(currentPost.getTitle());
         currentViewHolder.getAuthor().setText(currentPost.getAuthor());
         Picasso.with(mContext)
-                .load(currentPost.getImages()[0])
+                .load(currentPost.getImage())
 //                .error(R.mipmap.ic_default_post_image)
 //                .placeholder(R.mipmap.ic_load_post_image)
                 .into( currentViewHolder.getImage() );
