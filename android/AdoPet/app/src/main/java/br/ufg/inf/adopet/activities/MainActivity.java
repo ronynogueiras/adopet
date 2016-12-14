@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 
 import br.ufg.inf.adopet.R;
 import br.ufg.inf.adopet.adapters.PagerAdapter;
+import br.ufg.inf.adopet.util.AppData;
+import br.ufg.inf.adopet.util.InputTag;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
 
@@ -30,8 +32,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
 
+        boolean auth = !AppData.getData(this, AppData.Preferences.ACCESS_TOKEN,"").equals("");
 
-        PagerAdapter pager = new PagerAdapter(getSupportFragmentManager(),mTabLayout.getTabCount(),false);
+        PagerAdapter pager = new PagerAdapter(getSupportFragmentManager(),mTabLayout.getTabCount(),auth);
         mViewPager.setAdapter(pager);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
