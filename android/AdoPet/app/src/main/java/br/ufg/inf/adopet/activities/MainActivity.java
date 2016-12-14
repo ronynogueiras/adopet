@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.app_name));
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
 
         mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
         this.setUpTabs();
@@ -32,7 +33,22 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         PagerAdapter pager = new PagerAdapter(getSupportFragmentManager(),mTabLayout.getTabCount(),false);
         mViewPager.setAdapter(pager);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mTabLayout.getTabAt(position).select();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         mTabLayout.addOnTabSelectedListener(this);
 
         setSupportActionBar(toolbar);
