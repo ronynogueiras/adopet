@@ -40,7 +40,7 @@ class AnimalsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @animal.destroy
     render json: { success: true }
   end
