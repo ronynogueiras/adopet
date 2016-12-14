@@ -12,6 +12,7 @@
     <string name="imagem_da_postagem">Imagem da postagem</string>
     <string name="invalid_id_post">Identificador da Publicação inválido</string>
     <string name="description_not_avaliable">Descrição não disponível</string>
+    <string name="loading_message">Carregando...</string>
     <string-array name="tabs">
         <item>Seus Amigos</item>
         <item>Adotados</item>

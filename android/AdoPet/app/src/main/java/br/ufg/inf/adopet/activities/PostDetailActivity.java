@@ -1,5 +1,6 @@
 package br.ufg.inf.adopet.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -74,6 +75,10 @@ public class PostDetailActivity extends AppCompatActivity {
     }
 
     private void getPost(final String id){
+        final ProgressDialog loading = new ProgressDialog(this);
+        loading.setMessage(getString(R.string.loading_message));
+        loading.show();
+
         Response.Listener<String> response = new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -81,10 +86,11 @@ public class PostDetailActivity extends AppCompatActivity {
                     Log.i(AppConfig.DEBUG_TAG,s);
                 try {
                     JSONObject response = new JSONObject(s);
-
                     renderPostDetail(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                }finally {
+                    loading.dismiss();
                 }
 
             }
@@ -94,6 +100,7 @@ public class PostDetailActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError volleyError) {
                 if(AppConfig.DEV_MODE)
                     Log.e(AppConfig.DEBUG_TAG,volleyError.getMessage()+" ");
+                loading.dismiss();
             }
         };
 
@@ -118,8 +125,8 @@ public class PostDetailActivity extends AppCompatActivity {
         String description = postResponse.has("description") ? postResponse.getString("description") : getString(R.string.description_not_avaliable) ;
         this.mDescription.setText(description);
         this.mAuthor.setText(postResponse.getJSONObject("user").getString("name"));
-        Picasso.with(this).load("https://cdn.pixabay.com/photo/2014/03/05/19/23/dog-280332_960_720.jpg").into(this.mPicture);
-        this.mDate.setText("00/00/2010");//postResponse.getString("date")
+        Picasso.with(this).load("https://cdn.pixabay.com/photo/2014/03/05/19/23/dog-280332_960_720.jpg").fit().centerCrop().into(this.mPicture);
+        this.mDate.setText(postResponse.getString("created_at"));
 
         this.mInterest.setOnClickListener(new View.OnClickListener() {
             @Override
