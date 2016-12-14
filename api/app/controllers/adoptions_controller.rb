@@ -1,11 +1,15 @@
 class AdoptionsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_animal, only: [:create]
   before_action :set_new_owner, only: [:create]
   rescue_from ActiveRecord::RecordNotUnique, with: :animal_already_adopted
 
   def index
     @adoptions = Adoption.all
+  end
+
+  def show
+    @adoption = Adoption.find_by(id: adoption_params[:id])
   end
 
   def create
@@ -43,6 +47,6 @@ class AdoptionsController < ApplicationController
   end
 
   def adoption_params
-    params.permit(:animal)
+    params.permit(:animal, :id)
   end
 end

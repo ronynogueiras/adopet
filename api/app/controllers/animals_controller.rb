@@ -1,9 +1,21 @@
 class AnimalsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :for_adoption]
   before_action :set_animal, only: [:delete, :update]
 
   def index
-    @animals = Animal.all
+    @animals = animal_params[:categorie].nil? ?
+        Animal.all :
+        Animal.all.select do |animal|
+          animal.categorie == animal_params[:categorie]
+        end
+  end
+
+  def for_adoption
+    @animals = Animal.all.select do |animal| animal.adoption.nil? end
+    @animals = @animals.select do |animal|
+      animal.categorie == animal_params[:categorie]
+    end if !animal_params[:categorie].nil?
+    render :index
   end
 
   def show
