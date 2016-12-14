@@ -9,4 +9,5 @@ public interface AppConfig {
     String DEBUG_TAG = "AdoPet_Debug";
     boolean DEV_MODE  = true;
 
+    String PREFERENCE_USER_TAG = "user_preference_tag";
 }
