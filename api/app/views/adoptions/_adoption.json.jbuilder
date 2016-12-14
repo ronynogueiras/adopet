@@ -1,4 +1,5 @@
 json.ignore_nil!
+json.extract! adoption, :created_at
 
 json.new_owner do
   json.partial! adoption.new_owner, partial: 'users/user', as: :user
