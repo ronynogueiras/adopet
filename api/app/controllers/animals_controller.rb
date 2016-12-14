@@ -1,20 +1,15 @@
 class AnimalsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :for_adoption]
-  before_action :set_animal, only: [:delete, :update]
+  before_action :set_animal, only: [:destroy, :update]
 
   def index
-    @animals = animal_params[:categorie].nil? ?
-        Animal.all :
-        Animal.all.select do |animal|
-          animal.categorie == animal_params[:categorie]
-        end
+    @animals = Animal.all
+    filter_by_categorie unless animal_params[:categorie].nil?
   end
 
   def for_adoption
-    @animals = Animal.all.select do |animal| animal.adoption.nil? end
-    @animals = @animals.select do |animal|
-      animal.categorie == animal_params[:categorie]
-    end if !animal_params[:categorie].nil?
+    @animals = Animal.all.select { |animal| animal.adoption.nil? }
+    filter_by_categorie unless animal_params[:categorie].nil?
     render :index
   end
 
@@ -24,7 +19,7 @@ class AnimalsController < ApplicationController
 
   def create
     @user = current_user
-    @animal = Animal.new(animal_params.merge({user: @user}))
+    @animal = Animal.new(animal_params.merge(user: @user))
     if @animal.save!
       render :create
     else
@@ -45,8 +40,13 @@ class AnimalsController < ApplicationController
     render json: { success: true }
   end
 
-
   private
+
+  def filter_by_categorie
+    @animals = @animals.select do |animal|
+      animal.categorie == animal_params[:categorie]
+    end
+  end
 
   def update_params
     {

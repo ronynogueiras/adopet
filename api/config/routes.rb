@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth',
-                                      controllers:{
+                                      controllers: {
                                         registrations: 'registrations'
                                       }
-
 
   get 'users/:id/animals', to: 'users#animals'
   get 'for_adoption', to: 'animals#for_adoption'
