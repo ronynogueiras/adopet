@@ -1,7 +1,7 @@
 class Adoption < ApplicationRecord
   belongs_to :animal
-  belongs_to :old_owner, class_name: "User"
-  belongs_to :new_owner, class_name: "User"
+  belongs_to :old_owner, class_name: 'User'
+  belongs_to :new_owner, class_name: 'User'
 
   validates :animal, :old_owner, :new_owner, presence: true
   validate :different_users?

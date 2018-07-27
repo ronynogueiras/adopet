@@ -25,7 +25,8 @@ class AdoptionsController < ApplicationController
 
   def animal_already_adopted
     render template: 'shared/errors.json', locals: {
-                                              errors: "Animal já adotado !" }
+      errors: 'Animal já adotado !'
+    }
   end
 
   private
